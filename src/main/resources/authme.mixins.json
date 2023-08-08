@@ -13,6 +13,7 @@
     "RealmsGenericErrorScreenMixin",
     "RealmsAvailabilityAccessor",
     "SplashTextResourceSupplierAccessor"
+    "RunArgsNetworkMixin",
   ],
   "injectors": {
     "defaultRequire": 1

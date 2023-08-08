@@ -18,6 +18,7 @@ import net.minecraft.client.session.Session;
 import net.minecraft.client.session.report.AbuseReportContext;
 import net.minecraft.util.Util;
 
+import me.axieum.mcmod.authme.impl.AuthMe;
 import me.axieum.mcmod.authme.mixin.AbuseReportContextAccessor;
 import me.axieum.mcmod.authme.mixin.MinecraftClientAccessor;
 import me.axieum.mcmod.authme.mixin.RealmsAvailabilityAccessor;
@@ -102,9 +103,13 @@ public final class SessionUtils
         lastStatus = SessionStatus.UNKNOWN;
         lastStatusCheck = 0;
 
-        LOGGER.info(
-            "Minecraft session for {} (uuid={}) has been applied", session.getUsername(), session.getUuidOrNull()
-        );
+        // Save session for auto login
+        if (AuthMe.getConfig().autoLogin.saveSession) {
+            AuthMe.getConfig().autoLogin.savedSession.setSession(session);
+            AuthMe.CONFIG.save();
+        }
+
+        LOGGER.info("Minecraft session for {} (uuid={}) has been applied", session.getUsername(), session.getUuid());
     }
 
     /**
