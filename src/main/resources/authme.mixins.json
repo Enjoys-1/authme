@@ -12,8 +12,8 @@
     "MultiplayerScreenMixin",
     "RealmsGenericErrorScreenMixin",
     "RealmsAvailabilityAccessor",
-    "SplashTextResourceSupplierAccessor"
-    "RunArgsNetworkMixin",
+    "SplashTextResourceSupplierAccessor",
+    "RunArgsNetworkMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -109,7 +109,7 @@ public final class SessionUtils
             AuthMe.CONFIG.save();
         }
 
-        LOGGER.info("Minecraft session for {} (uuid={}) has been applied", session.getUsername(), session.getUuid());
+        LOGGER.info("Minecraft session for {} (uuid={}) has been applied", session.getUsername(), session.getUuidOrNull());
     }
 
     /**

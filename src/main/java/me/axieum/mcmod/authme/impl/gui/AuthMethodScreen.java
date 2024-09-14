@@ -10,7 +10,7 @@ import net.minecraft.client.gui.widget.TextWidget;
 import net.minecraft.client.gui.widget.TexturedButtonWidget;
 import net.minecraft.client.toast.SystemToast;
 import net.minecraft.client.util.InputUtil;
-import net.minecraft.client.util.Session;
+import net.minecraft.client.session.Session;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
@@ -19,7 +19,6 @@ import me.axieum.mcmod.authme.api.util.SessionUtils;
 import me.axieum.mcmod.authme.impl.AuthMe;
 import me.axieum.mcmod.authme.impl.config.AuthMeConfig;
 import static me.axieum.mcmod.authme.impl.AuthMe.CONFIG;
-import static me.axieum.mcmod.authme.impl.AuthMe.WIDGETS_TEXTURE;
 import static me.axieum.mcmod.authme.impl.AuthMe.getConfig;
 
 /**
@@ -161,7 +160,7 @@ public class AuthMethodScreen extends Screen
                     SessionUtils.setSession(session);
                     // Add a toast that greets the player
                     SystemToast.add(
-                        client.getToastManager(), SystemToast.Type.TUTORIAL_HINT,
+                        client.getToastManager(), SystemToast.Type.NARRATOR_TOGGLE,
                         Text.translatable("gui.authme.toast.greeting", Text.literal(session.getUsername())), null
                     );
                     close();

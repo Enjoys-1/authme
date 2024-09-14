@@ -2,6 +2,7 @@ package me.axieum.mcmod.authme.impl.config;
 
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
@@ -12,7 +13,7 @@ import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 import org.jetbrains.annotations.Nullable;
 
-import net.minecraft.client.util.Session;
+import net.minecraft.client.session.Session;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 
@@ -90,7 +91,7 @@ public class AuthMeConfig implements ConfigData
             public Session getSession()
             {
                 return new Session(username,
-                    uuid,
+                    UUID.fromString(uuid),
                     EncryptionUtil.decrypt(accessToken, encryptionKey),
                     xuid.isEmpty() ? Optional.empty() : Optional.of(xuid),
                     clientId.isEmpty() ? Optional.empty() : Optional.of(clientId),
@@ -100,7 +101,7 @@ public class AuthMeConfig implements ConfigData
             public void setSession(Session session)
             {
                 username = session.getUsername();
-                uuid = session.getUuid();
+                uuid = String.valueOf(session.getUuidOrNull());
                 encryptionKey = EncryptionUtil.generateKey();
                 accessToken = EncryptionUtil.encrypt(session.getAccessToken(), encryptionKey);
                 xuid = session.getXuid().orElse("");

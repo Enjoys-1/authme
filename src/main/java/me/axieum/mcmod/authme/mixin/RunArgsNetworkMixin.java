@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 
 import net.minecraft.client.RunArgs;
-import net.minecraft.client.util.Session;
+import net.minecraft.client.session.Session;
 
 import me.axieum.mcmod.authme.impl.AuthMe;
 import me.axieum.mcmod.authme.impl.config.AuthMeConfig;
